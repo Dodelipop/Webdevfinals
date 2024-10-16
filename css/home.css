@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: -10px; /* Remove the white space from the top */
+    background-color: #f0f0f0; /* Placeholder background color */
+}
+
+.hero .title {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: black;
+    z-index: 1;
+    padding: 10px;
+    font-family: 'Playfair Display', serif;
+    transition: all 

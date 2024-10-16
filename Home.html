@@ -1,0 +1,522 @@
+<html>
+ <head>
+  <title>
+   ELYSIAN COUTURE
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300&display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            margin-top: -10px; /* Remove the white space from the top */
+            background: url('images/homepagefirst.jpg') no-repeat center center; /* Use the provided image */
+            background-size: cover; /* Ensure the image covers the entire hero section */
+        }
+        .hero .title {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white; /* Change title color to white */
+            z-index: 1;
+            padding: 10px;
+            font-family: 'Playfair Display', serif;
+            transition: all 0.3s ease;
+        }
+        .hero .title h1 {
+            margin: 0;
+            font-size: 48px;
+            font-weight: bold;
+        }
+        .hero .title:hover h1 {
+            color: black; /* Change title color to black on hover */
+        }
+        .overlay {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: white;
+            opacity: 1;
+            z-index: 0;
+        }
+        .title:hover + .overlay {
+            display: block;
+        }
+        .content {
+            padding: 20px;
+            text-align: center; /* Center the text */
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh; /* Full viewport height */
+            position: relative;
+        }
+        .video-container {
+            position: relative;
+            width: 50%;
+            height: 100%;
+            background-color: #d0d0d0; /* Placeholder background color */
+        }
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .centered {
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: white;
+        }
+        .centered h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+        .centered a {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 1em;
+        }
+        .centered a.shop-now {
+            border: 1px solid white;
+            padding: 10px 20px;
+        }
+        .brand {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            font-size: 3em;
+            z-index: 1;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 50px;
+            flex-wrap: wrap;
+            background-color: #d3d3d3;
+            color: #000;
+        }
+        .footer-column {
+            flex: 1;
+            margin-right: 20px;
+            min-width: 200px;
+        }
+        .footer-column h3 {
+            font-size: 14px;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+        .footer-column a {
+            color: #000;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+        .footer-column input {
+            background-color: #d3d3d3;
+            border: none;
+            border-bottom: 1px solid #000;
+            color: #000;
+            padding: 5px 0;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .footer-column p {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #333;
+            width: 100%;
+        }
+        .footer-bottom img {
+            margin: 0 10px;
+        }
+        .footer-bottom p {
+            font-size: 12px;
+            margin: 10px 0 0;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .grid-item {
+            width: 100%;
+            height: 600px; /* Increase the height of the grid items */
+            position: relative;
+            background-color: #e0e0e0; /* Placeholder background color */
+        }
+        .black-box {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5em;
+            height: 100%; /* Ensure the black box takes full height */
+        }
+        .side-menu {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            z-index: 2;
+        }
+        .side-panel {
+            position: absolute;
+            top: 0;
+            left: -200px;
+            width: 200px;
+            height: 100%;
+            background-color: grey;
+            color: white;
+            transition: left 0.3s ease;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .side-panel ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .side-panel ul li {
+            margin-bottom: 20px;
+        }
+        .side-panel ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        .side-menu:hover + .side-panel,
+        .side-panel:hover {
+            left: 0;
+        }
+        .image-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%; /* Ensure the image covers the entire container */
+            object-fit: cover; /* Maintain aspect ratio and cover the container */
+        }
+
+        /* Mobile Viewport */
+        @media (max-width: 767px) {
+            .hero .title h1 {
+                font-size: 24px;
+            }
+            .centered h1 {
+                font-size: 1.5em;
+            }
+            .centered a {
+                font-size: 0.8em;
+                padding: 8px 16px;
+            }
+            .brand {
+                font-size: 2em;
+            }
+            .footer-column h3, .footer-column a, .footer-column p {
+                font-size: 12px;
+            }
+            .footer-column input {
+                font-size: 12px;
+            }
+            .footer-bottom p {
+                font-size: 10px;
+            }
+            .grid-item {
+                height: 300px;
+            }
+            .content p, .text-below {
+                font-size: 18px;
+                margin-top: 100px;
+                margin-bottom: 100px;
+            }
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+            .video-container {
+                width: 100%;
+                height: 300px;
+            }
+        }
+
+        /* Tablet Viewport */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .hero .title h1 {
+                font-size: 36px;
+            }
+            .centered h1 {
+                font-size: 1.8em;
+            }
+            .centered a {
+                font-size: 0.9em;
+                padding: 9px 18px;
+            }
+            .brand {
+                font-size: 2.5em;
+            }
+            .footer-column h3, .footer-column a, .footer-column p {
+                font-size: 13px;
+            }
+            .footer-column input {
+                font-size: 13px;
+            }
+            .footer-bottom p {
+                font-size: 11px;
+            }
+            .grid-item {
+                height: 400px;
+            }
+            .content p, .text-below {
+                font-size: 20px;
+                margin-top: 150px;
+                margin-bottom: 150px;
+            }
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+            .video-container {
+                width: 100%;
+                height: 400px;
+            }
+        }
+  </style>
+ </head>
+ <body>
+  <div class="navbar">
+  </div>
+  <div class="hero">
+   <div class="side-menu">
+   </div>
+   <div class="side-panel">
+    <ul>
+     <li>
+      <a href="#">
+       Selection
+      </a>
+     </li>
+     <li>
+      <a href="#">
+       Accessories
+      </a>
+     </li>
+     <li>
+      <a href="#">
+       About Us
+      </a>
+     </li>
+     <li>
+      <a href="#">
+       Home
+      </a>
+     </li>
+    </ul>
+   </div>
+   <div class="title" id="title">
+    <h1>
+     ELYSIAN COUTURE
+    </h1>
+   </div>
+   <div class="overlay">
+   </div>
+  </div>
+  <div class="content">
+   <p style="margin-top: 200px; margin-bottom: 200px; font-family: 'Roboto', sans-serif; font-size: 24px;">
+    Welcome to ELYSIAN COUTURE, where fashion meets elegance.
+   </p>
+   <div class="container">
+    <div class="video-container">
+     <video autoplay loop muted>
+      <source src="images/Gucci.mp4" type="video/mp4"/>
+      Your browser does not support the video tag.
+     </video>
+     <div class="centered">
+      <h1>
+       <a href="Accessories.html" style="color: white; text-decoration: none;">Accessories</a>
+      </h1>
+      <a class="shop-now" href="Accessories.html">
+       Shop now
+      </a>
+     </div>
+    </div>
+    <div class="video-container">
+     <video autoplay loop muted>
+      <source src="images/gucci2.mp4" type="video/mp4"/>
+      Your browser does not support the video tag.
+     </video>
+     <div class="centered">
+      <h1>
+       <a href="Selection.html" style="color: white; text-decoration: none;">Fashion</a>
+      </h1>
+      <a class="shop-now" href="Selection.html">
+       Shop now
+      </a>
+     </div>
+    </div>
+    <div class="brand">
+     <h1>
+      ELYSIAN COUTURE
+     </h1>
+    </div>
+   </div>
+   <div class="text-below" style="margin-top: 200px; margin-bottom: 200px; font-family: 'Roboto', sans-serif; font-size: 24px;">
+    Explore our latest fashion and accessories collections.
+   </div>
+   <div class="grid-container">
+    <div class="grid-item">
+     <div class="image-container">
+      <img alt="Fashion Image 1" height="400" src="images/OIP.jpg" width="600"/>
+     </div>
+    </div>
+    <div class="grid-item black-box">
+    </div>
+    <div class="grid-item black-box">
+    </div>
+    <div class="grid-item">
+     <div class="image-container">
+      <img alt="Fashion Image 2" height="400" src="images/OIP1.jpg" width="600"/>
+     </div>
+    </div>
+   </div>
+  </div>
+  <footer class="footer">
+   <div class="footer-column">
+    <h3>
+     MAY WE HELP YOU?
+    </h3>
+    <a href="#">
+     Contact Us
+    </a>
+    <a href="#">
+     My Order
+    </a>
+    <a href="#">
+     FAQs
+    </a>
+    <a href="#">
+     Email Unsubscribe
+    </a>
+    <a href="#">
+     Sitemap
+    </a>
+   </div>
+   <div class="footer-column">
+    <h3>
+     THE COMPANY
+    </h3>
+    <a href="#">
+     About Elysian Couture
+    </a>
+    <a href="#">
+     Elysian Couture Equilibrium
+    </a>
+    <a href="#">
+     Code of Ethics
+    </a>
+    <a href="#">
+     Careers
+    </a>
+    <a href="#">
+     Legal
+    </a>
+    <a href="#">
+     Privacy &amp; Cookie Policy
+    </a>
+    <a href="#">
+     Cookie Settings
+    </a>
+    <a href="#">
+     Corporate Information
+    </a>
+   </div>
+   <div class="footer-column">
+    <h3>
+     ELYSIAN COUTURE SERVICES
+    </h3>
+    <a href="#">
+     Discover Our Services
+    </a>
+    <a href="#">
+     Book an Appointment
+    </a>
+    <a href="#">
+     Collect In Store
+    </a>
+   </div>
+   <div class="footer-column">
+    <h3>
+     Country/Region, City
+    </h3>
+    <input placeholder="Country/Region, City" type="text"/>
+    <a href="#">
+     UNITED STATES
+    </a>
+    <p>
+     By entering your email address below, you consent to receiving our newsletter with access to our latest collections, events and initiatives. More details on this are provided in our
+     <a href="#" style="color: #000; text-decoration: underline;">
+      Privacy Policy
+     </a>
+    </p>
+    <input placeholder="Email" type="email"/>
+   </div>
+   <div class="footer-bottom">
+    <img alt="Blank image" height="50" src="Images/facebook.png" width="50"/>
+    <img alt="Blank image" height="50" src="Images/Instagram.webp" width="50"/>
+    <img alt="Blank image" height="50" src="Images/Link.png" width="50"/>
+    <img alt="Blank image" height="50" src="Images/X.png" width="50"/>
+    <p>
+     © 2016 - 2022 Elysian Couture S.p.A. - All rights reserved. SIAE LICENCE # 2294/I/1936 and 5647/I/1936
+    </p>
+   </div>
+  </footer>
+  <script>
+   window.addEventListener('scroll', function() {
+            const title = document.getElementById('title');
+            if (window.scrollY > 50) {
+                title.innerHTML = '<h1 style="color: white;">EC</h1>'; /* Change EC title color to white */
+            } else {
+                title.innerHTML = '<h1 style="color: white;">ELYSIAN COUTURE</h1>'; /* Change ELYSIAN COUTURE title color to white */
+            }
+        });
+  </script>
+ </body>
+</html>
