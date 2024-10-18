@@ -22,9 +22,9 @@
             position: relative;
             height: 100vh;
             overflow: hidden;
-            margin-top: -10px; /* Remove the white space from the top */
-            background: url('images/homepagefirst.jpg') no-repeat center center; /* Use the provided image */
-            background-size: cover; /* Ensure the image covers the entire hero section */
+            margin-top: -10px; 
+            background: url('images/homepagefirst.jpg') no-repeat center center; 
+            background-size: cover; 
         }
         .hero .title {
             position: absolute;
@@ -32,7 +32,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            color: white; /* Change title color to white */
+            color: white; 
             z-index: 1;
             padding: 10px;
             font-family: 'Playfair Display', serif;
@@ -44,7 +44,7 @@
             font-weight: bold;
         }
         .hero .title:hover h1 {
-            color: black; /* Change title color to black on hover */
+            color: black; 
         }
         .overlay {
             display: none;
@@ -62,19 +62,19 @@
         }
         .content {
             padding: 20px;
-            text-align: center; /* Center the text */
+            text-align: center; 
         }
         .container {
             display: flex;
             width: 100%;
-            height: 100vh; /* Full viewport height */
+            height: 100vh; 
             position: relative;
         }
         .video-container {
             position: relative;
             width: 50%;
             height: 100%;
-            background-color: #d0d0d0; /* Placeholder background color */
+            background-color: #d0d0d0; 
         }
         .video-container video {
             width: 100%;
@@ -177,9 +177,9 @@
         }
         .grid-item {
             width: 100%;
-            height: 600px; /* Increase the height of the grid items */
+            height: 600px; 
             position: relative;
-            background-color: #e0e0e0; /* Placeholder background color */
+            background-color: #e0e0e0; 
         }
         .black-box {
             background-color: black;
@@ -188,7 +188,7 @@
             align-items: center;
             color: white;
             font-size: 1.5em;
-            height: 100%; /* Ensure the black box takes full height */
+            height: 100%; 
         }
         .side-menu {
             position: absolute;
@@ -232,8 +232,8 @@
         }
         .image-container img {
             width: 100%;
-            height: 100%; /* Ensure the image covers the entire container */
-            object-fit: cover; /* Maintain aspect ratio and cover the container */
+            height: 100%; 
+            object-fit: cover; 
         }
 
         /* Mobile Viewport */
@@ -512,9 +512,9 @@
    window.addEventListener('scroll', function() {
             const title = document.getElementById('title');
             if (window.scrollY > 50) {
-                title.innerHTML = '<h1 style="color: white;">EC</h1>'; /* Change EC title color to white */
+                title.innerHTML = '<h1 style="color: white;">EC</h1>';
             } else {
-                title.innerHTML = '<h1 style="color: white;">ELYSIAN COUTURE</h1>'; /* Change ELYSIAN COUTURE title color to white */
+                title.innerHTML = '<h1 style="color: white;">ELYSIAN COUTURE</h1>'; 
             }
         });
   </script>
